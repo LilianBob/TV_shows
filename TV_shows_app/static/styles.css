@@ -6,3 +6,15 @@
     margin:auto;
     padding: 30px;
 }
+form{
+    margin:auto;
+}
+#inlineGroup{
+    display:flex;
+    justify-content: space-between;
+    margin:auto;
+}
+.leader{
+    display:flex;
+    justify-content: space-between;
+}

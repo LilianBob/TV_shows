@@ -4,40 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV shows</title>
+    <title>Add Show</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <div class="container-md">
-        <h1>All Shows</h1>
-        <table class="table table-light">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Network</th>
-                    <th>Release Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for show in shows %}
-            <tr>
-                <td>{{ show.id }}</td>
-                <td>{{ show.title }}</td>
-                <td>{{ show.network }}</td>
-                <td>{{ show.release_date }}</td>
-                <td><a href="/show/{{ show.id }}">show</a>| <a href="/edit/{{ show.id }}">edit</a>| <a href="/delete/{{ show.id }}">delete</a></td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <br>
-        <div class="par">
-            <p><a href="/new">Add a new show</a></p>
+        <div class="leader">
+            <h2>Add a new Show</h2>
+            <a href="/back">Go back</a>
         </div>
+        
+        <form action="/add_show" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title" class="col-3">Title</label>
+                <input type="text" name="title" id="title" class="form-control col-8">
+            </div>
+            <div class="form-group" id="inlineGroup">
+                <label for="network" class="col-3">Network</label>
+                <input type="text" name="network" id="network" class="form-control col-8">
+                <label for="release_date" class="col-3">Release_date</label>
+                <input type="text" name="release_date" id="release_date" class="form-control col-8">
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-3">Title</label>
+                <input type="text" name="description" id="description" class="form-control col-8">
+            </div>
+            <div class="form-group">
+                <label for="Add" class="col-3"></label>
+                <button class="btn btn-default col-2">create</button>
+            </div>
+        </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

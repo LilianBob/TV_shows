@@ -7,6 +7,10 @@ def index(request):
         'shows': Show.objects.all()
     }
     return render(request, 'index.html', context)
+def new_show(request):
+    return render(request, 'create.html')
+def back(request):
+    return redirect("/")
 def create(request):
     Show.objects.create(
         title=request.POST['title'],
