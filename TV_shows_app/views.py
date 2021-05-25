@@ -18,4 +18,6 @@ def create(request):
         release_date=request.POST['release_date'],
         description=request.POST['description'],
     )
+    if 'release_date' not in request.POST:
+        request.POST.get['release_date'] = '' or None  
     return redirect('/')
