@@ -21,3 +21,27 @@ def create(request):
     if 'release_date' not in request.POST:
         request.POST.get['release_date'] = '' or None  
     return redirect('/')
+def show(request, show_id):
+    show_select = Show.objects.get(id=show_id)
+    context = {
+        'show': show_select
+    }
+    return render(request, 'show.html', context)
+def edit(request, show_id):
+    show_select = Show.objects.get(id=show_id)
+    context = {
+        'show': show_select
+    }
+    return render(request, 'edit.html', context)
+def update(request, show_id):
+    show_update = Show.objects.get(id=show_id)
+    show_update.title = request.POST['title']
+    show_update.release_date = request.POST['release_date']
+    show_update.network = request.POST['network']
+    show_update.description = request.POST['description']
+    show_update.save()
+    return redirect('/')
+def delete(request, show_id):
+    d = Show.objects.get(id=show_id)
+    d.delete()
+    return redirect('/')

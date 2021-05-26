@@ -7,9 +7,13 @@
     padding: 30px;
 }
 .row .col-md-4{
+    display: block;
     margin: auto;
 } 
 .leader{
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
+}
+h1{
+    text-align:center;
 }
