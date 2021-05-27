@@ -40,8 +40,12 @@ def update(request, show_id):
     show_update.network = request.POST['network']
     show_update.description = request.POST['description']
     show_update.save()
-    return redirect('/')
+    return redirect(f'/edit/{ show_id }')
 def delete(request, show_id):
     d = Show.objects.get(id=show_id)
     d.delete()
     return redirect('/')
+# def edited_show(request):
+#     return redirect('/show')
+# def show_delete(request):
+#     return redirect('/delete')
