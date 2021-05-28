@@ -19,6 +19,7 @@
         
         <form action="/add_show" method="POST">
             {% csrf_token %}
+            <!-- {{ form.as_P}} -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -36,7 +37,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="release_date">Release_date</label>
+                        <label for="release_date">Release Date</label>
                         <input type="text" name="release_date" id="datePicker" class="form-control">
                     </div>
                 </div>
