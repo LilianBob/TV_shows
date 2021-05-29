@@ -4,11 +4,11 @@
 }
 .container-md{
     margin:auto;
-    padding: 30px;
+    padding: 50px;
 }
-.row .col-md-4{
+#navCols .form-group{
     display: block;
-    margin: auto;
+    margin:auto
 } 
 .leader{
     display:flex;

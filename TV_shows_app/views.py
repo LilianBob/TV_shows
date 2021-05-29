@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import Show
-from .forms import ShowRelease
 
 # Create your views here.
 def index(request):
@@ -9,20 +8,17 @@ def index(request):
     }
     return render(request, 'index.html', context)
 def new_show(request):
-    if request.method== "POST":
-        form = ShowRelease(request.POST)
     return render(request, 'create.html')
 def back(request):
     return redirect("/")
 def create(request):
-    release_date = ShowRelease(request.POST)
-    Show.objects.create(
+    if request.method== "POST":
+        Show.objects.create(
         title=request.POST['title'],
         network=request.POST['network'],
-        release_date= release_date,
-        # release_date=request.POST['release_date'],
+        release_date= request.POST['release_date'],
         description=request.POST['description'],
-    )
+        )
     if 'release_date' not in request.POST:
         request.POST.get['release_date'] = '' or None  
     return redirect('/')
@@ -50,7 +46,3 @@ def delete(request, show_id):
     d = Show.objects.get(id=show_id)
     d.delete()
     return redirect('/')
-# def edited_show(request):
-#     return redirect('/show')
-# def show_delete(request):
-#     return redirect('/delete')
